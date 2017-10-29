@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+						http://www.springframework.org/schema/beans/spring-beans.xsd
+						http://code.alibabatech.com/schema/dubbo
+						http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+	<!-- 配置全局范围服务监控过滤器 -->
+	<dubbo:consumer filter="" />
+	<dubbo:application name="XYZC_consumer" />
+	<dubbo:registry address="zookeeper://192.168.0.143:2181?backup=192.168.0.143:2182,192.168.0.143:2183" />
+	
+ 	<dubbo:reference interface="com.singon.service.other.OtherService" id="otherService" version="1.0"/>
+	<dubbo:reference interface="com.singon.service.testuser.TestUserService" id="testUserService" version="1.0"/>
+
+	<!-- 使用注解方式获取接口 -->    
+	<!-- 
+    <dubbo:annotation package="com.singon.service.imp.consumer" />
+    -->
+</beans>
